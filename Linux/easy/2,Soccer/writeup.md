@@ -30,9 +30,20 @@
   * nc -lvnp 1313
 * then using burp suite we can send the request like this:
 * ![alt text](image-8.png) 
-* do not forget to encode the payload to url encoding
+* do not forget to encode the payload to url encoding + encode all special characters 
 * then you should get a terminal like this: 
   * ![alt text](image-9.png)
+
+## Getting better interactive terminal
+![alt text](image-12.png)
+* use the following commands: 
+  > python3 -c 'import pty; pty.spawn("/bin/bash")'
+* then press **Ctrl + Z**
+* then write the following commands: 
+   > stty raw -echo; fg
+* then you now have interactive terminal, but you can not clear the screen. to do so use this command:
+   > export TERM=xterm
+* now you have much better terminal.
 
 ## Q5 ![alt text](image-10.png)
 * To know the virtual host name we need to open the nginx folder
@@ -45,3 +56,24 @@
     > ls
     * you should see the following: 
     * ![alt text](image-11.png)
+  
+## Q6 ![alt text](image-13.png)
+* now we need to know what is running on port 9091 
+* we can run on the target the following command:
+   > ss -tulnp
+* which means:
+  * show sockets (ss)
+  * -t -> show TCP connections
+  * -u -> show UDP connections
+  * -l -> show listening ports
+  * -n -> no resolve, show the ips not the names
+  * -p -> show the PID and its name
+* we get the following:![alt text](image-14.png)
+* but we can not see the name of the process running on 9091, **but why?**
+* running the following command will give us the answer:
+  > cat /etc/fstab/
+* ![alt text](image-15.png)
+* if you are not familiar with **/etc/fstab** this is a file which contains regulations folders operations which are mounted automatically on the boot time
+* the most important parameter here to notice is **hidepid = 2** 
+* this flag indicates that the system should hide the processes of other users.
+* and that is exactly why we can not see the process running on port 9091 because it is related to another user.
