@@ -25,7 +25,7 @@ def main(flag):
 
 if __name__ == "__main__":
     flag = open('flag.txt', 'r').read()
-    flag = flag.strip()
+    flag = flag.strip() # remove starting and trailing whitespace
     N, cypher  = main(flag)
     print("N:", N)
     print("e:", e)
