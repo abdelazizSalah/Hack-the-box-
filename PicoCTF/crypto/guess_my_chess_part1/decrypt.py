@@ -31,7 +31,7 @@ def inverse(x, y):
     return (x_coeff % y + y) % y
 
 import string
-cipher = 'RANWAQZKFSVQA'
+cipher = 'QYFFCHANIHXBQ'
 
 alphabet_map = {c:i for i,c in enumerate(string.ascii_uppercase)}
 index_map = {i:c for i,c in enumerate(string.ascii_uppercase)}

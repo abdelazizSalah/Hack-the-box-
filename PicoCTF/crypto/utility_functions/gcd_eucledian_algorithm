@@ -1,0 +1,40 @@
+def gcd_eucliedian_algorithm(a,b):
+    '''
+        complexity of this algo is 2 ceil(log2(min(a,b))) many division with reminder needed.
+        From my crypto course, this is the definition
+        Input: a from N0, b from N.
+        Fix k = 1, r0 = b
+        Compute q1 from N0, r1 from [0 , r0 - 1] such that a = r0 * q1 + r1 => q1 = a // r0, r1 = a - r0 * q1
+        iterate while (rk != 0)
+            compute q_k+1 from N0, and r_k+1 from [0 , (r_k-1 - 1)] such that 
+                r_k-1 = r_k * q_k+1 + r_k+1
+                set k = k + 1
+            return r_k-1
+
+
+    '''
+    if a < 0 or b < 0:
+        print('gcd can be only computed for positive numbers')
+        return -1
+    if b > a: # now it works in all cases.
+        temp = a
+        a = b
+        b = temp
+
+    # this implementation is not the most efficient in terms of memory, but it is fast. 
+    k = 1
+    r_s = []
+    r0 = b
+    q1 = a // r0
+    r1 = a - (r0 * q1)
+    r_s.append(r0)
+    r_s.append(r1)
+    while (r_s[k] != 0): 
+        qk_plus_1 =  r_s[k-1] // r_s[k] # integer division.
+        rk_plus_1 = r_s[k-1] - (r_s[k] * qk_plus_1)
+        r_s.append(rk_plus_1)
+        k = k + 1
+    return r_s[k -1 ]
+
+
+print(gcd_eucliedian_algorithm(13,13))
