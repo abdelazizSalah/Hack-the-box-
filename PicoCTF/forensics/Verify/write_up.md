@@ -1,0 +1,8 @@
+- You are given certain hash using sha256
+- open the server
+- you will find a folder called files
+- run this command
+  - > sha256sum files/* | grep **given hash**
+- then you will get the file name
+- run this command from the root 
+  - > ./decrypt.sh ./files/**filename**
