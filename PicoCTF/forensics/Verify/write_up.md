@@ -6,3 +6,4 @@
 - then you will get the file name
 - run this command from the root 
   - > ./decrypt.sh ./files/**filename**
+  - picoCTF{trust_but_verify_c6c8b911}
