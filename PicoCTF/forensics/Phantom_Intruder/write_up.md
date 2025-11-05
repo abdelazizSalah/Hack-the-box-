@@ -1,0 +1,6 @@
+- Open the given pcap file using wireshark.
+- Check the info column
+- use python to extract the last 12 bytes which are base64 encoded
+- decode it using cyberchef
+- then this will be us flag: 
+  - > picoCTF{1t_w4snt_th4t_34sy_tbh_4r_af160980}
