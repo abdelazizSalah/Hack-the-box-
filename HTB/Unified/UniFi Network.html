@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <style>
+      @charset "UTF-8";
+      [ng\:cloak],
+      [ng-cloak],
+      [data-ng-cloak],
+      [x-ng-cloak],
+      .ng-cloak,
+      .x-ng-cloak,
+      .ng-hide:not(.ng-hide-animate) {
+        display: none !important;
+      }
+      ng\:form {
+        display: block;
+      }
+      .ng-animate-shim {
+        visibility: hidden;
+      }
+      .ng-anchor {
+        position: absolute;
+      }
+    </style>
+    <meta charset="utf-8" />
+    <title>UniFi Network</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      unifi-prevent-focus-zoom=""
+    />
+    <meta name="apple-itunes-app" content="app-id=1057750338" />
+    <!-- base href="https://10.129.8.169:8443/manage/" -->
+    <link
+      rel="apple-touch-icon-precomposed"
+      href="https://10.129.8.169:8443/manage/angular/g9c8f4ab88/images/favicons/favicon-152.png?v=2"
+    />
+    <meta name="msapplication-TileColor" content="#0193d7" />
+    <meta
+      name="msapplication-TileImage"
+      content="angular/g9c8f4ab88/images/favicons/favicon-144.png?v=2"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="152x152"
+      href="https://10.129.8.169:8443/manage/angular/g9c8f4ab88/images/favicons/favicon-152.png?v=2"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="144x144"
+      href="https://10.129.8.169:8443/manage/angular/g9c8f4ab88/images/favicons/favicon-144.png?v=2"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="120x120"
+      href="https://10.129.8.169:8443/manage/angular/g9c8f4ab88/images/favicons/favicon-120.png?v=2"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="72x72"
+      href="https://10.129.8.169:8443/manage/angular/g9c8f4ab88/images/favicons/favicon-72.png?v=2"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      href="https://10.129.8.169:8443/manage/angular/g9c8f4ab88/images/favicons/favicon-57.png?v=2"
+    />
+    <link
+      rel="icon"
+      href="https://10.129.8.169:8443/manage/angular/g9c8f4ab88/images/favicons/favicon-32.png?v=2"
+      sizes="32x32"
+    />
+    <script src="UniFi%20Network_files/index.js" defer="defer"></script>
+    <link
+      href="UniFi%20Network_files/style.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="UniFi%20Network_files/styles.bundle.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="UniFi%20Network_files/app.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script async="" src="UniFi%20Network_files/initial.js"></script>
+    <script async="" src="UniFi%20Network_files/components.js"></script>
+    <link
+      href="UniFi%20Network_files/fonts.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style id="angular-vs-repeat-style">
+      .vs-repeat-debug-element {
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: red;
+        z-index: 99999999;
+        box-shadow: 0 0 20px red;
+      }
+
+      .vs-repeat-debug-element + .vs-repeat-debug-element {
+        display: none;
+      }
+
+      .vs-repeat-before-content,
+      .vs-repeat-after-content {
+        border: none !important;
+        padding: 0 !important;
+      }
+    </style>
+    <script async="" src="UniFi%20Network_files/base.js"></script>
+    <script src="UniFi%20Network_files/dynamic.settings.js" async=""></script>
+    <script src="UniFi%20Network_files/dynamic.dpi.js" async=""></script>
+    <script src="UniFi%20Network_files/dynamic.maps.js" async=""></script>
+    <script async="" src="UniFi%20Network_files/app.js"></script>
+  </head>
+  <body id="unifi-network-app-container">
+    <div
+      id="unifi-network-app"
+      aura-theme=""
+      ng-controller="ManageController as manageCtrl"
+      ng-strict-di=""
+      class="ubnt-mod-dark"
+    >
+      <svg class="pos-absolute" height="0" width="0">
+        <defs>
+          <linearGradient
+            id="experienceGraphGradient"
+            x1="0"
+            y1="0"
+            x2="0"
+            y2="100%"
+            patternUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stop-color="#0046cc" stop-opacity="0.3"></stop>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
+          </linearGradient>
+        </defs></svg
+      ><route-status
+        route-status-fatal-state="manageCtrl.ENV.FATAL_STATE"
+        route-status-immediate="manageCtrl.site.isSiteChanging"
+      ></route-status>
+      <div
+        class="app is-desktop"
+        ng-class="{'no-header': !manageCtrl.renderHeader}"
+        unifi-bowser=""
+      >
+        <unifi-key-events></unifi-key-events>
+        <div
+          class="ubntToastContainer ubntToastContainer--topRight"
+          hey-toaster=""
+          unifi-position-alerts=""
+        ></div>
+        <!----><ui-view
+          ><!----><ui-view
+            ><div class="unifiAccountContainer">
+              <div class="stack spreadApart fullHeight">
+                <div class="flexible shelfCenter">
+                  <div class="unifiAccount">
+                    <div
+                      class="unifiAccount__unifiLogo icon ubnt-icon--unifi"
+                    ></div>
+                    <div class="unifiAccount__appNameAndVersion">
+                      <span
+                        class="appDisplaySpaceAfter ng-hide"
+                        unifi-if-app="'app-unifi-hotspot'"
+                        translate="ACCOUNT_TITLE_HOTSPOT_MANAGER"
+                        >Hotspot Manager</span
+                      ><span>6.4.54</span>
+                    </div>
+                    <div class="unifiAccount__content">
+                      <!----><ui-view
+                        ><div class="unifiLogin ubnt-mod-dark">
+                          <form
+                            class="appForm ng-pristine ng-invalid ng-invalid-required"
+                            novalidate=""
+                            name="loginCtrl.form"
+                            ng-class="{'is-form-validation-visible': loginCtrl.showValidation}"
+                            ng-submit="loginCtrl.form.$valid &amp;&amp; loginCtrl.login()"
+                          >
+                            <!----><!---->
+                            <div class="appFormGroup">
+                              <label
+                                class="appLabel appLabel--primary unweighted"
+                                translate="ACCOUNT_LOGIN_LABEL_USERNAME"
+                                >Username</label
+                              ><input
+                                class="input--full ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+                                type="text"
+                                name="username"
+                                ng-model="loginCtrl.username"
+                                required=""
+                                autocapitalize="none"
+                                autocorrect="off"
+                                autofocus=""
+                              />
+                            </div>
+                            <div class="appFormGroup">
+                              <label
+                                class="appLabel appLabel--primary unweighted"
+                                translate="ACCOUNT_LOGIN_LABEL_PASSWORD"
+                                >Password</label
+                              ><input
+                                class="input--full ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"
+                                type="password"
+                                name="password"
+                                ng-model="loginCtrl.password"
+                                required=""
+                              />
+                            </div>
+                            <div class="verticalRhythmTop--cozy">
+                              <div class="appFormGroup alignCenter">
+                                <div class="appInputGroup appInputGroup--cozy">
+                                  <input
+                                    id="loginRemember"
+                                    type="checkbox"
+                                    name="remember"
+                                    ng-model="loginCtrl.remember"
+                                    class="ng-pristine ng-untouched ng-valid ng-empty"
+                                  /><label
+                                    class="unweighted"
+                                    for="loginRemember"
+                                    translate="ACCOUNT_LOGIN_LABEL_REMEMBER_ME"
+                                    >Remember me</label
+                                  ><unifi-tooltip class="ubntTooltip--small"
+                                    ><div
+                                      class="ubntTooltipContainer ubntTooltipContainer--hoverable"
+                                      ng-mouseover="!$ctrl.clickable ? $ctrl.showTooltip = true : angular.noop"
+                                      ng-mouseleave="!$ctrl.clickable ? $ctrl.showTooltip = false : angular.noop"
+                                      ng-class="::[    $ctrl.clickable ? 'clickable' : 'ubntTooltipContainer--hoverable',    $ctrl.containerClass  ]"
+                                      ng-init="$ctrl.clickable ? $ctrl.showTooltip = false : angular.noop"
+                                      ng-click="$ctrl.clickable ? $ctrl.showTooltip = !$ctrl.showTooltip : angular.noop"
+                                      on-outside-element-click="$ctrl.clickable ? $ctrl.showTooltip = false : angular.noop"
+                                    >
+                                      <div ng-transclude="prompt">
+                                        <div
+                                          class="unifiAuraIcon"
+                                          ng-switch="::auraIconCtrl.icon"
+                                          ng-class="auraIconCtrl.containerClass"
+                                          unifi-aura-icon="'info'"
+                                          unifi-aura-icon-class="['ubntIcon', 'color-primary']"
+                                        >
+                                          <!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><svg
+                                            ng-switch-when="info"
+                                            ng-class='{"ubntIcon":true,"color-primary":true}'
+                                            viewBox="0 0 16 16"
+                                            version="1.1"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            xlink="http://www.w3.org/1999/xlink"
+                                            class="ubntIcon color-primary"
+                                          >
+                                            <g
+                                              stroke="none"
+                                              stroke-width="1"
+                                              fill="none"
+                                              fill-rule="evenodd"
+                                            >
+                                              <circle
+                                                stroke="currentColor"
+                                                cx="8"
+                                                cy="8"
+                                                r="7.5"
+                                              ></circle>
+                                              <rect
+                                                fill="currentColor"
+                                                x="7.5"
+                                                y="7"
+                                                width="1"
+                                                height="5"
+                                              ></rect>
+                                              <rect
+                                                fill="currentColor"
+                                                x="7.5"
+                                                y="5"
+                                                width="1"
+                                                height="1"
+                                              ></rect>
+                                            </g></svg
+                                          ><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!----><!---->
+                                        </div>
+                                      </div>
+                                      <!---->
+                                    </div></unifi-tooltip
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                            <div class="verticalRhythmTop--cozy">
+                              <button
+                                class="appMainButton appMainButton--primary appMainButton--full busyToggle"
+                                id="loginButton"
+                                ng-click="loginCtrl.showValidation = true"
+                                busy-toggle="loginCtrl.isSubmitting"
+                                busy-toggle-spinner-classes="['appSpinner', 'appSpinner--light', 'appSpinner--centered']"
+                                translate="ACCOUNT_LOGIN_ACTIONS_SIGN_IN"
+                              >
+                                Sign In
+                              </button>
+                            </div>
+                            <div class="verticalRhythmTop--cozy">
+                              <a
+                                class="appMainButton appMainButton--transparentDark appMainButton--full"
+                                ui-sref="manage.account.forgotpassword"
+                                unifi-if-app="['app-unifi-manage', 'app-unifi-overview']"
+                                translate="ACCOUNT_LOGIN_LINK_FORGOT_PASSWORD"
+                                href="https://10.129.8.169:8443/manage/account/forgotpassword"
+                                >Forgot password?</a
+                              >
+                            </div>
+                          </form>
+                        </div></ui-view
+                      >
+                    </div>
+                    <!---->
+                  </div>
+                </div>
+                <!---->
+              </div>
+            </div></ui-view
+          ><unifi-browser-warning></unifi-browser-warning
+        ></ui-view>
+        <div
+          class="blackout unifiDebugPanel ng-hide"
+          ng-show="debugPanelCtrl.isEnabled"
+        >
+          <!---->
+        </div>
+        <div class="unifiModalLayoutContainer">
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="addClientLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="autoChannelsModalLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="addDpiCategoryGraphLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="analyticsAcceptanceLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="addSiteLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="addSshKeyLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="apGroupsModalLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="cloudAccess2faTokenLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="cloudAccessUserLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="cloudKeySdCardCheckLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="configureMapsLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="confirmLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="dashboardFormLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="deviceUlteSetupLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="deviceUlteProSetupLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="discoveryToolChromeRequiredLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="discoveryToolInstallLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="discoveryToolPortAlreadyInUseLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="dpiRestrictionFormLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="dpiRestrictionGroupFormLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="dpiRestrictionNetworkAssignmentFormLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="editAccountLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="adminPasswordChangeSuggestionLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="editMapLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="exportSiteLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="eliteDeviceOfflineLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="firewallGroupsCreateLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="fallbackVlanLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="hotspot2NaiRealmListEntryLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="hotspotPackageLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="hotspot2CapabListEntryLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="hotspot2IconListEntryLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="hotspot2OsuListEntryLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="hotspot2QosListEntryLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="importSiteLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="ipsSuppressionFormLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="ipsWhitelistFormLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="instantRmaLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="ipsThreatDetailLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="ispThroughputLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="preferencesLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="radiusProfileLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="remoteLoginLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="restoreBackupSitePickerLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="reportClientFingerprintLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="reportIncorrectExperienceScoreLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="simpleTextEditorLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="sitesOverviewLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="speedTestLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="systemConfigLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="reportTermsOfServiceLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="trainingLoginLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="warningLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="webrtcErrorLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="webrtcFailedLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="wirelessNetworkMacFilterAddBatchLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="wirelessNetworkMacFilterAddClientsLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="wirelessUplinkDfsWarningLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="workingLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="webrtcReconnectingLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="createOperatorLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            ng-repeat="layout in ::manageCtrl.FRAME_LAYOUTS track by $index"
+            unifi-blackout-modal-layout="createVouchersLayout"
+            unifi-blackout-modal-disable-esc="layout.disableEsc"
+            unifi-blackout-modal-reject-on-esc="layout.rejectOnEsc"
+          >
+            <!---->
+          </div>
+          <!---->
+          <div
+            unifi-app-takeover-layout="whatsNewTakeoverLayout"
+            unifi-app-takeover-show-header="true"
+          >
+            <!---->
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

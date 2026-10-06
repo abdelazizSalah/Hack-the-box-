@@ -1,36 +1,27 @@
-## Identify partitions and Bitlocker volum 
-- file bitlocker.dd
-- You will get this output:
-    -                    
-┌──(kali㉿kali)-[~/…/Hack-the-box-/PicoCTF/forensics/Bitlocker-1]
-└─$ file bitlocker-1.dd 
-bitlocker-1.dd: DOS/MBR boot sector, code offset 0x58+2, OEM-ID "-FVE-FS-", sectors/cluster 8, reserved sectors 0, Media descriptor 0xf8, sectors/track 63, heads 255, hidden sectors 124499968, FAT (32 bit), sectors/FAT 8160, serial number 0, unlabeled; NTFS, sectors/track 63, physical drive 0x1fe0, $MFT start cluster 393217, serial number 02020454d414e204f, checksum 0x41462020
-                                        
-
-- This means that you have filesystem is FVE (BitLocker) encrypted.
-- Also we have 124499968 hidden sectors
-
-- 
-# compute & export offset (you already have 124499968)
-OFFSET=$((124499968 * 512))   # -> 63743983616
-
-# create a loop device for the partition (read-only)
-sudo losetup --read-only --find --show --offset $OFFSET bitlocker-1.dd
-# note the device printed (e.g. /dev/loop0)
-
-
-# extract crackable hash
-sudo bitlocker2john /dev/loop0 > bl.hash
-
-
-# crack with John or hashcat (example John + rockyou)
-john --wordlist=/usr/share/wordlists/rockyou.txt bl.hash
-john --show bl.hash
-
-# once you recover PASSWORD, unlock with dislocker and mount decrypted NTFS
-sudo mkdir -p /mnt/bitlk /mnt/dec
-sudo dislocker -V /dev/loop0 -u"RECOVERED_PASSWORD" -- /mnt/bitlk
-sudo mount -o ro,loop /mnt/bitlk/dislocker-file /mnt/dec
-
-# search for flag
-grep -R "picoCTF\|flag" -n /mnt/dec 2>/dev/null
+- Examining the file property
+    > file disko-2.dd
+    - ![alt text](image-1.png)
+    - dd files are byte to byte image of a disk or partition. 
+    - This means that the available disk image contains 2 partitions
+    - and the OS was DOS. 
+    - the first partition ID=0x83 is an identifier refers to OS from type linux. 
+    - start-CHS and end-CHS, in the past the hard was defined by cylendyr, head, and senor, so these values represent this parts. 
+    - partition 1 starts from 2048, and it contains 51200 sectors, each of size 512 bytes. 
+    - partition 2 starts from 53248, and contains 65536 sectors
+- Since it contained multiple partitions, we should use fdisk to list available partitions within. 
+    > fdisk -l disko-2.dd
+    - ![alt text](image-2.png)
+    - fdisk is a disk partitioning tool, allows us to view, create, delete or modify disk partition on storage devices.
+    - with -l, it lists to you all available partitions.
+    - since the problem mentioned that we need to target the linux, so we should focus on the first partition. 
+- Extracting the partition into .img format
+    > dd if=disko-2.dd of=part1.img bs=512 skip=2048 count=51200
+- This dd is a tool for handling dd files.
+    - if is the input file
+    - of is the output file
+    - bs is the byte size, we know it from fdisk
+    - skip determines the begining byte. 
+    - count is the number of sectors to be copied. 
+- use string to search for the flag
+    > strings part1.img | grep pico
+- picoCTF{4_P4Rt_1t_i5_055dd175}

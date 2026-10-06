@@ -1,0 +1,2 @@
+[2Kgit                     [Status: 200, Size: 14472, Words: 1195, Lines: 242, Duration: 601ms][0m
+[2Kbilling                 [Status: 302, Size: 390, Words: 60, Lines: 12, Duration: 1448ms][0m

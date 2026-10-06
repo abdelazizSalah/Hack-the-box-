@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE items [
+<!ELEMENT items (item*)>
+<!ATTLIST items burpVersion CDATA "">
+<!ATTLIST items exportTime CDATA "">
+<!ELEMENT item (time, url, host, port, protocol, method, path, extension, request, status, responselength, mimetype, response, comment)>
+<!ELEMENT time (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT host (#PCDATA)>
+<!ATTLIST host ip CDATA "">
+<!ELEMENT port (#PCDATA)>
+<!ELEMENT protocol (#PCDATA)>
+<!ELEMENT method (#PCDATA)>
+<!ELEMENT path (#PCDATA)>
+<!ELEMENT extension (#PCDATA)>
+<!ELEMENT request (#PCDATA)>
+<!ATTLIST request base64 (true|false) "false">
+<!ELEMENT status (#PCDATA)>
+<!ELEMENT responselength (#PCDATA)>
+<!ELEMENT mimetype (#PCDATA)>
+<!ELEMENT response (#PCDATA)>
+<!ATTLIST response base64 (true|false) "false">
+<!ELEMENT comment (#PCDATA)>
+]>
+<items burpVersion="2026.2.1" exportTime="Sat Mar 07 20:32:50 EST 2026">
+  <item>
+    <time>Sat Mar 07 20:32:34 EST 2026</time>
+    <url><![CDATA[http://cctv.htb/zm/index.php?view=request&request=event&action=removetag&tid=1]]></url>
+    <host ip="10.129.226.60">cctv.htb</host>
+    <port>80</port>
+    <protocol>http</protocol>
+    <method><![CDATA[GET]]></method>
+    <path><![CDATA[/zm/index.php?view=request&request=event&action=removetag&tid=1]]></path>
+    <extension>php</extension>
+    <request base64="true"><![CDATA[R0VUIC96bS9pbmRleC5waHA/dmlldz1yZXF1ZXN0JnJlcXVlc3Q9ZXZlbnQmYWN0aW9uPXJlbW92ZXRhZyZ0aWQ9MSBIVFRQLzEuMQ0KSG9zdDogY2N0di5odGINClVzZXItQWdlbnQ6IE1vemlsbGEvNS4wIChYMTE7IExpbnV4IHg4Nl82NDsgcnY6MTI4LjApIEdlY2tvLzIwMTAwMTAxIEZpcmVmb3gvMTI4LjANCkFjY2VwdDogdGV4dC9odG1sLGFwcGxpY2F0aW9uL3hodG1sK3htbCxhcHBsaWNhdGlvbi94bWw7cT0wLjksaW1hZ2UvYXZpZixpbWFnZS93ZWJwLGltYWdlL3BuZyxpbWFnZS9zdmcreG1sLCovKjtxPTAuOA0KQWNjZXB0LUxhbmd1YWdlOiBlbi1VUyxlbjtxPTAuNQ0KQWNjZXB0LUVuY29kaW5nOiBnemlwLCBkZWZsYXRlLCBicg0KQ29ubmVjdGlvbjoga2VlcC1hbGl2ZQ0KQ29va2llOiBBZGRNb25pdG9yc1RhYmxlLmJzLnRhYmxlLnNlYXJjaFRleHQ9OyBBZGRNb25pdG9yc1RhYmxlLmJzLnRhYmxlLnBhZ2VOdW1iZXI9MTsgem1SZXBvcnRzVGFibGUuYnMudGFibGUuc2VhcmNoVGV4dD07IHptUmVwb3J0c1RhYmxlLmJzLnRhYmxlLnBhZ2VOdW1iZXI9MTsgem1Db250cm9sVGFibGUuYnMudGFibGUuaGlkZGVuQ29sdW1ucz0lNUIlMjJJZCUyMiU1RDsgem1Ta2luPWNsYXNzaWM7IHptQ1NTPWJhc2U7IHNwZWVkPTA7IHptSGVhZGVyRmxpcD11cDsgWk1TRVNTSUQ9bW92OHQ4NTUxOHVvNmlqdTQ1cnFubGFqZms7IHptQmFuZHdpZHRoPW1lZGl1bQ0KVXBncmFkZS1JbnNlY3VyZS1SZXF1ZXN0czogMQ0KUHJpb3JpdHk6IHU9MCwgaQ0KDQo=]]></request>
+    <status></status>
+    <responselength></responselength>
+    <mimetype></mimetype>
+    <response base64="true"></response>
+    <comment></comment>
+  </item>
+</items>

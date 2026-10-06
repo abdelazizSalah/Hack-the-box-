@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nexion DeviceHub — Passport Scanner</title><link rel="icon" href="http://htb.touch:8443/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="Nexion%20DeviceHub%20%E2%80%94%20Passport%20Scanner_files/style.css"></head><body>
+<div class="layout"><aside class="sidebar"><div class="sidebar__brand"><div class="sidebar__logo"><svg viewBox="0 0 36 36" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="32" height="28" rx="3" stroke="#fff" stroke-width="2.5"></rect><path d="M8 14h20M8 20h20M8 26h12" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"></path><rect x="10" y="1" width="16" height="6" rx="2" fill="#2563eb" stroke="#fff" stroke-width="1.5"></rect><circle cx="18" cy="4" r="1.5" fill="#fff"></circle></svg></div><div><div class="sidebar__title">Nexion DeviceHub</div><div class="sidebar__sub">Gate B7 — Kiosk #042</div></div></div>
+<nav class="sidebar__nav">
+<a href="http://htb.touch:8443/dashboard" class="nav-item"><span class="nav-icon">■</span>Dashboard</a>
+<a href="http://htb.touch:8443/scanner" class="nav-item active"><span class="nav-icon">⎙</span>Scanner</a>
+<a href="http://htb.touch:8443/printer" class="nav-item"><span class="nav-icon">⎘</span>Printer</a>
+<a href="http://htb.touch:8443/logs" class="nav-item"><span class="nav-icon">☰</span>Activity Log</a>
+<a href="http://htb.touch:8443/settings" class="nav-item"><span class="nav-icon">⚙</span>Settings</a>
+</nav>
+<div class="sidebar__footer"><a href="http://localhost:5173/" class="nav-item" style="margin-bottom:8px;color:#0ea5e9"><span class="nav-icon">←</span>Return to Kiosk</a><a href="http://htb.touch:8443/logout" class="nav-item" style="margin-bottom:8px;color:#f87171"><span class="nav-icon">✖</span>Sign Out</a><div>Nexion Systems Ltd.</div><div>Service v4.2.1</div></div></aside>
+<main class="main"><header class="topbar"><div class="topbar__title">Passport Scanner</div><div class="topbar__info"><span class="dot dot--green"></span>Scanner Online &nbsp; <span class="dot dot--green"></span>Printer Online</div></header>
+<div class="content">
+<div class="cards" style="grid-template-columns:1fr 1fr">
+<div class="card"><h3>Device Information</h3><table class="info-table">
+<tbody><tr><td class="label">Model</td><td>Nexion DocReader SR-4200</td></tr>
+<tr><td class="label">Serial</td><td class="mono">NX-SR-2024-0042</td></tr>
+<tr><td class="label">Firmware</td><td class="mono">4.2.1</td></tr>
+<tr><td class="label">Connection</td><td>USB 3.0</td></tr>
+<tr><td class="label">Status</td><td><span class="badge badge--online">online</span></td></tr>
+<tr><td class="label">Scan Count</td><td>24893</td></tr>
+<tr><td class="label">Last Scan</td><td class="mono">2026-09-25 16:12:36</td></tr>
+<tr><td class="label">Username</td><td class="mono"><span id="su1">••••••••</span> <span style="cursor:pointer;font-size:10px;color:#0ea5e9" onclick="toggleCred('su1','KioskUser')">show</span></td></tr>
+<tr><td class="label">Password</td><td class="mono"><span id="sp1">••••••••</span> <span style="cursor:pointer;font-size:10px;color:#0ea5e9" onclick="toggleCred('sp1','K!0sk2026#')">show</span></td></tr>
+<tr><td class="label">Last Calibration</td><td class="mono">2026-04-04 20:55:32</td></tr>
+</tbody></table>
+<div style="margin-top:16px;display:flex;gap:8px">
+<button class="btn btn--danger" onclick="api('/api/scanner/power','POST',{powered:false})">Power Off</button>
+<button class="btn btn--secondary" onclick="api('/api/scanner/calibrate','POST',{})">Calibrate</button>
+<button class="btn btn--secondary" onclick="testScan()">Test Scan</button>
+</div></div>
+<div class="card"><h3>Last Scan Capture</h3><p style="color:#555;font-size:12px">No scan captured yet</p></div></div>
+<div class="cards" style="grid-template-columns:1fr 1fr">
+<div class="card"><h3>Scanner Settings</h3>
+<div class="form-group"><label>Resolution</label><select id="s_res"><option>300 DPI</option><option selected="selected">600 DPI</option><option>1200 DPI</option></select></div>
+<div class="form-group"><label>Output Format</label><select id="s_fmt"><option selected="selected">JPEG</option><option>PNG</option><option>TIFF</option></select></div>
+<div class="form-group"><label><input type="checkbox" id="s_mrz" checked="checked"> MRZ Detection</label></div>
+<div class="form-group"><label><input type="checkbox" id="s_cal" checked="checked"> Auto-Calibrate on Startup</label></div>
+<button class="btn btn--success" onclick="saveScannerSettings()">Save Settings</button></div>
+<div class="card"><h3>Document Image</h3>
+<p style="color:#6b7b8d;font-size:12px;margin-bottom:12px">Load a document image for the scanner to use during passport verification.</p>
+<div id="testImageStatus" style="margin-bottom:12px;font-family:monospace;font-size:12px;color:#6b7b8d">No document image loaded</div>
+
+<input type="file" id="testImageFile" accept="image/jpeg,image/png" style="display:none" onchange="uploadTestImage(this)">
+<div style="display:flex;gap:8px">
+<button class="btn btn--success btn--small" onclick="document.getElementById('testImageFile').click()">Upload Image</button>
+<button class="btn btn--danger btn--small" onclick="removeTestImage()" disabled="disabled">Remove Image</button>
+</div></div></div></div></main></div>
+<script>
+function api(url, method, body) {
+  var opts = { method };
+  if (body !== null && body !== undefined) { opts.headers = {'Content-Type':'application/json'}; opts.body = JSON.stringify(body); }
+  fetch(url, opts).then(r => r.ok ? location.reload() : location.href='/login');
+}
+function testScan() {
+  document.body.style.cursor='wait';
+  fetch('/api/scan', { method:'POST', headers:{'Content-Length':'0'} })
+    .then(() => location.reload());
+}
+function saveScannerSettings() {
+  api('/api/scanner/settings','PUT',{
+    resolution: document.getElementById('s_res').value,
+    format: document.getElementById('s_fmt').value,
+    mrzDetection: document.getElementById('s_mrz').checked,
+    autoCalibrate: document.getElementById('s_cal').checked
+  });
+}
+function toggleCred(id,val) {
+  var el=document.getElementById(id);
+  var btn=el.nextElementSibling;
+  if(el.textContent==='••••••••'){el.textContent=val;btn.textContent='hide';}
+  else{el.textContent='••••••••';btn.textContent='show';}
+}
+function savePrinterSettings() {
+  api('/api/printer/settings','PUT',{
+    paperSize: document.getElementById('p_paper').value,
+    quality: document.getElementById('p_qual').value,
+    autoCut: document.getElementById('p_cut').checked
+  });
+}
+function uploadTestImage(input) {
+  if (!input.files[0]) return;
+  document.body.style.cursor='wait';
+  fetch('/api/scanner/test-image', { method:'POST', body:input.files[0] })
+    .then(r => { if(!r.ok) throw r; return r.json(); })
+    .then(() => location.reload())
+    .catch(() => { alert('Upload failed'); document.body.style.cursor='default'; });
+}
+function removeTestImage() {
+  if (!confirm('Remove document image?')) return;
+  fetch('/api/scanner/test-image', { method:'DELETE' })
+    .then(() => location.reload());
+}
+</script></body></html>
