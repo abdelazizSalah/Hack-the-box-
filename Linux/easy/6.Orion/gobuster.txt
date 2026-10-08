@@ -1,0 +1,104 @@
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://orion.htb
+[+] Method:                  GET
+[+] Threads:                 50
+[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+[2K/index                (Status: 200) [Size: 12272]
+[2K/admin                (Status: 302) [Size: 0] [--> http://orion.htb/admin/login]
+[2K/assets               (Status: 301) [Size: 178] [--> http://orion.htb/assets/]
+[2K/p1                   (Status: 200) [Size: 12272]
+[2K/p3                   (Status: 200) [Size: 12272]
+[2K/p2                   (Status: 200) [Size: 12272]
+[2K/p4                   (Status: 200) [Size: 12272]
+[2K/p5                   (Status: 200) [Size: 12272]
+[2K/wp-admin             (Status: 418) [Size: 54217]
+[2K/p6                   (Status: 200) [Size: 12272]
+[2K/p7                   (Status: 200) [Size: 12272]
+[2K/p11                  (Status: 200) [Size: 12272]
+[2K/p10                  (Status: 200) [Size: 12272]
+[2K/p12                  (Status: 200) [Size: 12272]
+[2K/p8                   (Status: 200) [Size: 12272]
+[2K/p15                  (Status: 200) [Size: 12272]
+[2K/p9                   (Status: 200) [Size: 12272]
+[2K/p13                  (Status: 200) [Size: 12272]
+[2K/p14                  (Status: 200) [Size: 12272]
+[2K/p17                  (Status: 200) [Size: 12272]
+[2K/p30                  (Status: 200) [Size: 12272]
+[2K/p28                  (Status: 200) [Size: 12272]
+[2K/p20                  (Status: 200) [Size: 12272]
+[2K/p37                  (Status: 200) [Size: 12272]
+[2K/p21                  (Status: 200) [Size: 12272]
+[2K/p23                  (Status: 200) [Size: 12272]
+[2K/p26                  (Status: 200) [Size: 12272]
+[2K/p25                  (Status: 200) [Size: 12272]
+[2K/p24                  (Status: 200) [Size: 12272]
+[2K/p18                  (Status: 200) [Size: 12272]
+[2K/p16                  (Status: 200) [Size: 12272]
+[2K/p32                  (Status: 200) [Size: 12272]
+[2K/p31                  (Status: 200) [Size: 12272]
+[2K/p49                  (Status: 200) [Size: 12272]
+[2K/p38                  (Status: 200) [Size: 12272]
+[2K/p22                  (Status: 200) [Size: 12272]
+[2K/p48                  (Status: 200) [Size: 12272]
+[2K/p04                  (Status: 200) [Size: 12272]
+[2K/p05                  (Status: 200) [Size: 12272]
+[2K/p40                  (Status: 200) [Size: 12272]
+[2K/p35                  (Status: 200) [Size: 12272]
+[2K/p39                  (Status: 200) [Size: 12272]
+[2K/p34                  (Status: 200) [Size: 12272]
+[2K/p47                  (Status: 200) [Size: 12272]
+[2K/p46                  (Status: 200) [Size: 12272]
+[2K/p19                  (Status: 200) [Size: 12272]
+[2K/p27                  (Status: 200) [Size: 12272]
+[2K/p06                  (Status: 200) [Size: 12272]
+[2K/p42                  (Status: 200) [Size: 12272]
+[2K/p95                  (Status: 200) [Size: 12272]
+[2K/p58                  (Status: 200) [Size: 12272]
+[2K/p36                  (Status: 200) [Size: 12272]
+[2K/p33                  (Status: 200) [Size: 12272]
+[2K/p41                  (Status: 200) [Size: 12272]
+[2K/p50                  (Status: 200) [Size: 12272]
+[2K/p54                  (Status: 200) [Size: 12272]
+[2K/p02                  (Status: 200) [Size: 12272]
+[2K/p01                  (Status: 200) [Size: 12272]
+[2K/p60                  (Status: 200) [Size: 12272]
+[2K/p67                  (Status: 200) [Size: 12272]
+[2K/p03                  (Status: 200) [Size: 12272]
+[2K/p99                  (Status: 200) [Size: 12272]
+[2K/p07                  (Status: 200) [Size: 12272]
+[2K/p55                  (Status: 200) [Size: 12272]
+[2K/p70                  (Status: 200) [Size: 12272]
+[2K/p72                  (Status: 200) [Size: 12272]
+[2K/p77                  (Status: 200) [Size: 12272]
+[2K/p45                  (Status: 200) [Size: 12272]
+[2K/p51                  (Status: 200) [Size: 12272]
+[2K/p44                  (Status: 200) [Size: 12272]
+[2K/p52                  (Status: 200) [Size: 12272]
+[2K/p29                  (Status: 200) [Size: 12272]
+[2K/p71                  (Status: 200) [Size: 12272]
+[2K/p83                  (Status: 200) [Size: 12272]
+[2K/p94                  (Status: 200) [Size: 12272]
+[2K/p80                  (Status: 200) [Size: 12272]
+[2K/p91                  (Status: 200) [Size: 12272]
+[2K/p63                  (Status: 200) [Size: 12272]
+[2K/p62                  (Status: 200) [Size: 12272]
+[2K/p1010130             (Status: 200) [Size: 12272]
+[2K/p1204001             (Status: 200) [Size: 12272]
+[2K/p1010131             (Status: 200) [Size: 12272]
+[2K/p1241502             (Status: 200) [Size: 12272]
+[2K/p7220055             (Status: 200) [Size: 12272]
+
+[!] Keyboard interrupt detected, terminating.
+
+===============================================================
+Finished
+===============================================================
